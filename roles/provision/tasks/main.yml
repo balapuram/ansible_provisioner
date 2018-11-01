@@ -1,0 +1,30 @@
+---
+#Installing git package
+- name: installing  git package
+  yum:
+    name: git
+    state: present
+
+#Cloning repository
+- git: 
+    repo: 'https://bitbucket.org/azneita/devops-challenge.git'
+    dest: /webapps/devops
+
+#Installing epel-release, python-pip package
+- name: Installing python-pip
+  yum:
+    name: "{{packages}}"
+    state: latest
+  vars:
+    packages:
+    - epel-release
+    - python-pip
+
+#Installing python packages
+- name: Installing  python packages Flask and  Werkzeug 
+  pip:
+    name: Flask,Werkzeug
+
+#Running pythong application
+- name: run my application
+  command:  /webapps/devops/app.py 

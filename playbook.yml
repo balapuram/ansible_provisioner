@@ -1,0 +1,8 @@
+---
+ - name: Provisioning server with required software
+   hosts: localhost
+   roles:
+       - /opt/myproject/roles/provision
+
+
+ 
